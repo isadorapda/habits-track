@@ -53,9 +53,10 @@ export async function appRoutes(app: FastifyInstance) {
         dailyHabits: true,
       },
     })
-    const completedHabits = day?.dailyHabits.map((dayHabit) => {
-      return dayHabit.habit_id
-    })
+    const completedHabits =
+      day?.dailyHabits.map((dayHabit) => {
+        return dayHabit.habit_id
+      }) ?? []
     return { possibleHabits, completedHabits }
   })
   app.patch('/habits/:id/toggle', async (request) => {
